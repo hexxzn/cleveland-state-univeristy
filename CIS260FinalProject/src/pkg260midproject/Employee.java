@@ -1,13 +1,12 @@
 package pkg260midproject;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Employee {
     private String firstName, lastName;
     private int employeeID;
     private double salary;
-    public static ArrayList<Employee> employees = new ArrayList<Employee>();
+    public static ArrayList<Employee> employees = new ArrayList<>();
     
     Employee() {}
     

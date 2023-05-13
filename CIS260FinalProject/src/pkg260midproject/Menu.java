@@ -35,9 +35,9 @@ public class Menu {
                 case 1 -> loadEmployeeData(input);
                 case 2 -> addNewEmployee(input);
                 case 3 -> removeEmployee(input, employee);
-                case 4 -> displayAllEmployees(employee);
+                case 4 -> displayAllEmployees();
                 case 5 -> getEmployeeByID(input, employee);
-                case 6 -> getEmployeesBySalary(input, employee);
+                case 6 -> getEmployeesBySalary(input);
                 case 7 -> employee.sortBySalary();
                 case 8 -> employee.sortByFirstName();
                 case 9 -> employee.sortByLastName();
@@ -60,7 +60,7 @@ public class Menu {
         employee.setEmployeeID(input.nextInt(), input);
         System.out.print("Salary: ");
         employee.setSalary(input.nextDouble());
-        employee.employees.add(employee);
+        Employee.employees.add(employee);
     }
     
     // Add multiple employees
@@ -78,9 +78,9 @@ public class Menu {
         System.out.print("\nEnter ID of employee to remove: ");
         int tempID = input.nextInt();
         
-        for(Employee emp : employee.employees) {
+        for(Employee emp : Employee.employees) {
             if(emp.getEmployeeID() == tempID) {
-                employee.employees.remove(emp);
+                Employee.employees.remove(emp);
                 break;
             }
         }
@@ -89,10 +89,20 @@ public class Menu {
     }
     
     // Display all employee data
-    public static void displayAllEmployees(Employee employee) {
-        System.out.println(employee.headerString());
-        for(Employee emp : employee.employees) {
+    public static void displayAllEmployees() {
+        boolean employeesFound = false;
+        System.out.println(Employee.headerString());
+        for(Employee emp : Employee.employees) {
+            employeesFound = true;
             System.out.println(emp.toString());
+        }
+        
+        if(!employeesFound) {
+            System.out.println(
+                "|                                       " +
+                "NO EMPLOYEES FOUND" +
+                "                                       |"
+            );
         }
     }
     
@@ -101,9 +111,9 @@ public class Menu {
         System.out.print("\nEnter employee ID: ");
         int tempID = input.nextInt();
         
-        for(Employee emp : employee.employees) {
+        for(Employee emp : Employee.employees) {
             if(emp.getEmployeeID() == tempID) {
-                System.out.println(emp.headerString());
+                System.out.println(Employee.headerString());
                 System.out.println(emp.toString());
                 break;
             }
@@ -111,16 +121,16 @@ public class Menu {
     }
     
     // Retrieve employees in given salary range
-    public static void getEmployeesBySalary(Scanner input, Employee employee) {
+    public static void getEmployeesBySalary(Scanner input) {
         System.out.print("\nEnter minimum salary: ");
         double salaryMin = input.nextDouble();
         System.out.print("Enter maximum salary: ");
         double salaryMax = input.nextDouble();
         
-        System.out.println(employee.headerString());
+        System.out.println(Employee.headerString());
         
         boolean employeesFound = false;
-        for(Employee emp : employee.employees) {
+        for(Employee emp : Employee.employees) {
             if(emp.getSalary() >= salaryMin && emp.getSalary() <= salaryMax) {
                 System.out.println(emp.toString());
                 employeesFound = true;
