@@ -28,59 +28,27 @@ public class Menu {
                 """
             );
             
-            System.out.print("\nEnter 1 through 12: ");
+            System.out.print("Enter 1 through 12: ");
             
             userInput = input.nextInt();
             switch(userInput) {
-                case 1:
-                    loadEmployeeData(input);
-                    break;
-                case 2:
-                    addNewEmployee(input);
-                    break;
-                case 3:
-                    removeEmployee(input, employee);
-                    break;
-                case 4:
-                    displayAllEmployees(employee);
-                    break;
-                case 5:
-                    getEmployeeByID(input, employee);
-                    break;
-                case 6:
-                    getEmployeesBySalary(input, employee);
-                    break;
-                case 7:
-                    employee.sortBySalary();
-                    break;
-                case 8:
-                    employee.sortByFirstName();
-                    break;
-                case 9:
-                    employee.sortByLastName();
-                    break;
-                case 10:
-                    employee.sortByID();
-                    break;
-                case 11:
-                    employee.clearData();
-                    break;
-                case 12:
-                    running = false;
-                    break;
+                case 1 -> loadEmployeeData(input);
+                case 2 -> addNewEmployee(input);
+                case 3 -> removeEmployee(input, employee);
+                case 4 -> displayAllEmployees(employee);
+                case 5 -> getEmployeeByID(input, employee);
+                case 6 -> getEmployeesBySalary(input, employee);
+                case 7 -> employee.sortBySalary();
+                case 8 -> employee.sortByFirstName();
+                case 9 -> employee.sortByLastName();
+                case 10 -> employee.sortByID();
+                case 11 -> employee.clearData();
+                case 12 -> running = false;
             }
         }
     }
     
-    public static void loadEmployeeData(Scanner input) {
-        System.out.print("\nEnter number of employees to add: ");
-        int numEmployees = input.nextInt();
-        
-        for(int i = 0; i < numEmployees; i++) {
-            addNewEmployee(input);
-        }
-    }
-    
+    // Add single employee
     public static void addNewEmployee(Scanner input) {
         System.out.println("\nEnter employee data");
         Employee employee = new Employee();
@@ -95,6 +63,17 @@ public class Menu {
         employee.employees.add(employee);
     }
     
+    // Add multiple employees
+    public static void loadEmployeeData(Scanner input) {
+        System.out.print("\nEnter number of employees to add: ");
+        int numEmployees = input.nextInt();
+        
+        for(int i = 0; i < numEmployees; i++) {
+            addNewEmployee(input);
+        }
+    }
+    
+    // Remove employee by ID
     public static void removeEmployee(Scanner input, Employee employee) {
         System.out.print("\nEnter ID of employee to remove: ");
         int tempID = input.nextInt();
@@ -109,6 +88,7 @@ public class Menu {
         System.out.println("\nEmployee not found.");
     }
     
+    // Display all employee data
     public static void displayAllEmployees(Employee employee) {
         System.out.println(employee.headerString());
         for(Employee emp : employee.employees) {
@@ -116,6 +96,7 @@ public class Menu {
         }
     }
     
+    // Retrieve employee by ID
     public static void getEmployeeByID(Scanner input, Employee employee) {
         System.out.print("\nEnter employee ID: ");
         int tempID = input.nextInt();
@@ -129,6 +110,7 @@ public class Menu {
         }
     }
     
+    // Retrieve employees in given salary range
     public static void getEmployeesBySalary(Scanner input, Employee employee) {
         System.out.print("\nEnter minimum salary: ");
         double salaryMin = input.nextDouble();
