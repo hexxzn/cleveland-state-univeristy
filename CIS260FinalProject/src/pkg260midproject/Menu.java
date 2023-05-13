@@ -102,6 +102,8 @@ public class Menu {
                 break;
             }
         }
+        
+        System.out.println("\nEmployee not found.");
     }
     
     public static void displayAllEmployees(Employee employee) {
