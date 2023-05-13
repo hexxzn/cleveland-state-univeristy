@@ -39,7 +39,7 @@ public class Employee {
         return this.employeeID;
     }
     
-    public void setID(int employeeID, Scanner input) {
+    public void setEmployeeID(int employeeID, Scanner input) {
         int tempID = employeeID;
         
         while(!isFiveDigits(tempID) || !isAvailable(tempID)) {

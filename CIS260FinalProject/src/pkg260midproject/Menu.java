@@ -89,7 +89,7 @@ public class Menu {
         System.out.print("Last name: ");
         employee.setLastName(input.next());
         System.out.print("ID: ");
-        employee.setID(input.nextInt(), input);
+        employee.setEmployeeID(input.nextInt(), input);
         System.out.print("Salary: ");
         employee.setSalary(input.nextDouble());
         employee.employees.add(employee);
