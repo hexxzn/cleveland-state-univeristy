@@ -11,19 +11,22 @@ public class Menu {
         
         while(running) {
             System.out.println("");
-            System.out.println("""
-                             1.  Load employee data
-                             2.  Add new employee
-                             3.  Remove employee
-                             4.  Display all employees
-                             5.  Retrieve employee by id
-                             6.  Retrieve employees by salary range
-                             7.  Sort employees by salary
-                             8.  Sort employees by first name
-                             9.  Sort employees by last name
-                             10. Sort employees by ID
-                             11. Clear all employee data
-                             12. Exit program""");
+            System.out.println(
+                """
+                1.  Load employee data
+                2.  Add new employee
+                3.  Remove employee
+                4.  Display all employees
+                5.  Retrieve employee by id
+                6.  Retrieve employees by salary range
+                7.  Sort employees by salary
+                8.  Sort employees by first name
+                9.  Sort employees by last name
+                10. Sort employees by ID
+                11. Clear all employee data
+                12. Exit program
+                """
+            );
             
             System.out.print("\nEnter 1 through 12: ");
             
@@ -143,9 +146,9 @@ public class Menu {
         }
         if(!employeesFound) {
             System.out.println(
-                    "|                            " +
-                    "NO EMPLOYEES FOUND IN GIVEN SALARY RANGE" +
-                    "                            |"
+                "|                            " +
+                "NO EMPLOYEES FOUND IN GIVEN SALARY RANGE" +
+                "                            |"
             );
         }
     }
