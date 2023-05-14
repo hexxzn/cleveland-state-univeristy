@@ -63,25 +63,6 @@ public class Employee {
         this.salary = salary;
     }
     
-    public static String headerString() {
-        return String.format(
-            "\n| %-25s | %-25s | %-15s | %-20s |", 
-            "FIRST NAME",
-            "LAST NAME",
-            "ID", 
-            "SALARY") + 
-                "\n--------------------------------------------------------------------------------------------------";
-    }
-    
-    public String toString() {
-        return String.format(
-            "| %-25s | %-25s | %-15s | %-20s |", 
-            this.firstName,
-            this.lastName,
-            this.employeeID, 
-            "$" + String.format("%1$,.2f", this.salary));
-    }
-    
     private boolean isFiveDigits(int employeeID) {
         return Integer.toString(employeeID).length() == 5;
     }
@@ -114,5 +95,24 @@ public class Employee {
     
     public void clearData() {
         employees.clear();
+    }
+    
+    public static String headerString() {
+        return String.format(
+            "\n| %-25s | %-25s | %-15s | %-20s |", 
+            "FIRST NAME",
+            "LAST NAME",
+            "ID", 
+            "SALARY") + 
+                "\n--------------------------------------------------------------------------------------------------";
+    }
+    
+    public String toString() {
+        return String.format(
+            "| %-25s | %-25s | %-15s | %-20s |", 
+            this.firstName,
+            this.lastName,
+            this.employeeID, 
+            "$" + String.format("%1$,.2f", this.salary));
     }
 }
