@@ -34,9 +34,9 @@ public class Menu {
             switch(userInput) {
                 case 1 -> loadEmployeeData(input);
                 case 2 -> addNewEmployee(input);
-                case 3 -> removeEmployee(input, employee);
+                case 3 -> removeEmployee(input);
                 case 4 -> displayAllEmployees();
-                case 5 -> getEmployeeByID(input, employee);
+                case 5 -> getEmployeeByID(input);
                 case 6 -> getEmployeesBySalary(input);
                 case 7 -> employee.sortBySalary();
                 case 8 -> employee.sortByFirstName();
@@ -46,6 +46,8 @@ public class Menu {
                 case 12 -> running = false;
             }
         }
+        
+        input.close();
     }
     
     // Add single employee
@@ -74,7 +76,7 @@ public class Menu {
     }
     
     // Remove employee by ID
-    public static void removeEmployee(Scanner input, Employee employee) {
+    public static void removeEmployee(Scanner input) {
         System.out.print("\nEnter ID of employee to remove: ");
         int tempID = input.nextInt();
         
@@ -107,16 +109,25 @@ public class Menu {
     }
     
     // Retrieve employee by ID
-    public static void getEmployeeByID(Scanner input, Employee employee) {
+    public static void getEmployeeByID(Scanner input) {
         System.out.print("\nEnter employee ID: ");
         int tempID = input.nextInt();
+        boolean employeeFound = false;
         
+        System.out.println(Employee.headerString());
         for(Employee emp : Employee.employees) {
             if(emp.getEmployeeID() == tempID) {
-                System.out.println(Employee.headerString());
                 System.out.println(emp.toString());
                 break;
             }
+        }
+        
+        if(!employeeFound) {
+            System.out.println(
+                "|                                       " +
+                "EMPLOYEE NOT FOUND" +
+                "                                       |"
+            );
         }
     }
     
@@ -136,6 +147,7 @@ public class Menu {
                 employeesFound = true;
             }
         }
+        
         if(!employeesFound) {
             System.out.println(
                 "|                            " +
